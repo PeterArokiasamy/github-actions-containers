@@ -10,7 +10,9 @@ env:
 jobs:
   test:
     environment: testing
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #Will host the image
+    container: #All steps below will run inside the container
+      image: node:16
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: githubcluster.qrovfg3.mongodb.net
