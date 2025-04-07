@@ -11,11 +11,12 @@ jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
+    #If you comment below then job will be in Runner. But Still can use Service container, but need to change to localhost IP and port.
     container:
       image: node:16
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongodb
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017 #Default IP & Port
       MONGODB_USERNAME: root #Should be same as env variable of docker services.
       MONGODB_PASSWORD: example
       PORT: 8080
@@ -25,8 +26,8 @@ jobs:
         env: #Default environment variable required by Docker container. Will be same for all scenarios.
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
-        #ports:
-          #- 27017:27017 #
+        ports:
+          - 27017:27017 
     steps:
       - name: Get Code
         uses: actions/checkout@v3
