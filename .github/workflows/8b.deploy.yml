@@ -12,8 +12,8 @@ jobs:
     environment: testing
     runs-on: ubuntu-latest
     #If you comment below then job will be in Runner. But Still can use Service container, but need to change to localhost IP and port.
-    container:
-      image: node:16
+    #container:
+      #image: node:16
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
       MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017 #Default IP & Port
